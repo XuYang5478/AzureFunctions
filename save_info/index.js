@@ -19,8 +19,8 @@ module.exports = async function (context, req) {
     context.bindings.tableBinding.push({
         PartitionKey: "stu_info",
         RowKey: stu.id,
-        Name: stu.name,
-        Department: stu.department,
-        Class: stu.class
+        name: stu.name,
+        department: stu.department,
+        class: stu.class
     });
 }
