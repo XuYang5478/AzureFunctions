@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "count",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
