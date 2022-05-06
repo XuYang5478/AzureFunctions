@@ -12,7 +12,7 @@
 const df = require("durable-functions")
 
 module.exports = df.entity(function (context) {
-    const currentValue = context.df.getState(() => 0);
+    const currentValue = context.df.getState(() => 1);
     switch (context.df.operationName) {
         case "add":
             context.df.setState(currentValue + 1);
@@ -21,7 +21,7 @@ module.exports = df.entity(function (context) {
             context.df.return(currentValue);
             break;
         case "reset":
-            context.df.setState(0);
+            context.df.setState(1);
             break;
     }
 });
