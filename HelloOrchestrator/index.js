@@ -12,15 +12,20 @@
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function* (context) {
-    const outputs = [];
+    // const outputs = [];
 
-    let count = 0;
+    let args = ["One", "Two", "Three", "Four", "Five"];
+    let result = "";
+
+    for (let arg of args) {
+        result += yield context.df.callActivity("hello", result+arg);
+    }
     
     // Replace "Hello" with the name of your Durable Activity Function.
-    outputs.push(yield context.df.callActivity("counter", count));
-    outputs.push(yield context.df.callActivity("counter", count));
-    outputs.push(yield context.df.callActivity("counter", count));
+    // outputs.push(yield context.df.callActivity("counter", count));
+    // outputs.push(yield context.df.callActivity("counter", count));
+    // outputs.push(yield context.df.callActivity("counter", count));
 
     // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-    return outputs;
+    return result;
 });
